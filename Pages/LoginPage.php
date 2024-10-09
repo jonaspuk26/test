@@ -2,8 +2,6 @@
 
 namespace Pages;
 
-use Codeception\Constraint\Page;
-
 class LoginPage extends PageObject
 {
     public array $selector =

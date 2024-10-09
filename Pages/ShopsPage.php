@@ -2,8 +2,6 @@
 
 namespace Pages;
 
-use Codeception\Constraint\Page;
-
 class ShopsPage extends PageObject
 {
     public array $selector =

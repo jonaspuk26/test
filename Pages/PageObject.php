@@ -2,8 +2,6 @@
 
 namespace Pages;
 
-use Tests\Support\AcceptanceTester;
-
 class PageObject
 {
     public function getSelector(string $selector)

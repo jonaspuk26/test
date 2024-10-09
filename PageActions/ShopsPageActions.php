@@ -3,10 +3,8 @@
 namespace PageActions;
 
 use Pages\Header;
-use Pages\LoginPage;
 use Pages\ShopsPage;
 use Tests\Support\AcceptanceTester;
-use Tests\Support\CustomHelpers;
 
 class ShopsPageActions
 {
