@@ -4523,6 +4523,7 @@
     ],
     "dev": true,
     "dev-package-names": [
+        "codeception/module-asserts",
         "codeception/module-webdriver"
     ]
 }

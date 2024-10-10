@@ -6,7 +6,8 @@
 actor: AcceptanceTester
 modules:
   enabled:
-    - \Tests\Support\CustomHelpers:
+    - \Codeception\Module\Asserts
+    - \Tests\Support\CustomHelpers
     - WebDriver:
         wait: 10
         url: 'https://wbo-tst.wallmob.com'

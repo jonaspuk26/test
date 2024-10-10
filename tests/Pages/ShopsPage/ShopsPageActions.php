@@ -1,9 +1,9 @@
 <?php
 
-namespace PageActions;
+namespace Pages\ShopsPage;
 
-use Pages\Header;
-use Pages\ShopsPage;
+use Pages\HeaderMenuPage\Header;
+use Pages\LoginPage\LoginPageActions;
 use Tests\Support\AcceptanceTester;
 
 class ShopsPageActions
@@ -15,7 +15,7 @@ class ShopsPageActions
         $this->loginPage = new LoginPageActions();
     }
 
-    public function goToShopsPage(AcceptanceTester $I)
+    public function goToShopsPage(AcceptanceTester $I): void
     {
         $this->loginPage->login($I);
         $I->waitForElement($this->header->getSelector('shopsHeader'));
@@ -24,7 +24,7 @@ class ShopsPageActions
         $I->seeElement($this->shopsPage->getSelector('addNewShopButton'));
     }
 
-    public function addNewShop(AcceptanceTester $I)
+    public function addNewShop(AcceptanceTester $I): void
     {
         $I->fillField(
             $this->shopsPage->getSelector('shopNameField'),
@@ -65,6 +65,22 @@ class ShopsPageActions
         $I->scrollIntoView($this->shopsPage->getSelector('saveShopButton'));
         $I->waitForElementClickable($this->shopsPage->getSelector('saveShopButton'), 15);
         $I->click($this->shopsPage->getSelector('saveShopButton'));
-        $I->see('testShop', $this->shopsPage->getSelector('shopsSearchResultsText'));
+        $I->seeElement($this->shopsPage->getSelector('shopUpdatedToastMessage'));
+    }
+
+    public function deleteNewShop(AcceptanceTester $I): void
+    {
+        $I->reloadPage();
+        $I->waitForElement($this->shopsPage->getSelector('shopsSearchResults'));
+        $selectors = $I->grabMultiple($this->shopsPage->getSelector('shopsSearchResults'));
+        $mySelector = $I->findSelectorByText(
+            $selectors,
+            $this->shopsPage->getData('shopName'));
+        $I->click($mySelector);
+        $I->scrollIntoView($this->shopsPage->getSelector('removeShopButton'));
+        $I->waitForElementClickable($this->shopsPage->getSelector('removeShopButton'), 15);
+        $I->click($this->shopsPage->getSelector('removeShopButton'));
+        $I->click($this->shopsPage->getSelector('confirmRemoveShopButton'));
+        $I->seeElement($this->shopsPage->getSelector('shopRemovedToastMessage'));
     }
 }

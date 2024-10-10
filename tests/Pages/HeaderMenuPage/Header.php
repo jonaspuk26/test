@@ -1,6 +1,8 @@
 <?php
 
-namespace Pages;
+namespace Pages\HeaderMenuPage;
+
+use Pages\PageObject;
 
 class Header extends PageObject
 {

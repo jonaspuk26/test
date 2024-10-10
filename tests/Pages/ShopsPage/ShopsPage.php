@@ -1,6 +1,8 @@
 <?php
 
-namespace Pages;
+namespace Pages\ShopsPage;
+
+use Pages\PageObject;
 
 class ShopsPage extends PageObject
 {
@@ -22,7 +24,11 @@ class ShopsPage extends PageObject
             'latitudeField' => '[id="lat"]',
             'longitudeField' => '[id="lng"]',
             'saveShopButton' => '[ng-if="parent_form.main_form.$valid"]',
-            'shopsSearchResultsText' => '[class="search-result-text ng-binding"]'
+            'shopsSearchResults' => '[class="search-result-text ng-binding"]',
+            'removeShopButton' => '[id="button-remove"]',
+            'confirmRemoveShopButton' => '[ng-click="$close(true)"]',
+            'shopRemovedToastMessage' => '[class="inner"]',
+            'shopUpdatedToastMessage' => '[class="messages"]',
         ];
 
     public array $data =

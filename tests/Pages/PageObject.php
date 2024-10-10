@@ -13,6 +13,4 @@ class PageObject
     {
         return $this->data[$data];
     }
-
-
 }

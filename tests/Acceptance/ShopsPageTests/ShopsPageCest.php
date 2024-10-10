@@ -1,11 +1,11 @@
 <?php
 
-namespace Acceptance\FirstTest;
+namespace Acceptance\ShopsPageTests;
 
-use PageActions\ShopsPageActions;
+use Pages\ShopsPage\ShopsPageActions;
 use Tests\Support\AcceptanceTester;
 
-class testCest
+class ShopsPageCest
 {
     private $shopsPage;
 
@@ -18,5 +18,6 @@ class testCest
     {
         $this->shopsPage->goToShopsPage($I);
         $this->shopsPage->addNewShop($I);
+        $this->shopsPage->deleteNewShop($I);
     }
 }

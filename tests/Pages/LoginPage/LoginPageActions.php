@@ -1,9 +1,8 @@
 <?php
 
-namespace PageActions;
+namespace Pages\LoginPage;
 
-use Pages\Header;
-use Pages\LoginPage;
+use Pages\HeaderMenuPage\Header;
 use Tests\Support\AcceptanceTester;
 
 class LoginPageActions

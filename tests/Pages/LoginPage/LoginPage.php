@@ -1,6 +1,8 @@
 <?php
 
-namespace Pages;
+namespace Pages\LoginPage;
+
+use Pages\PageObject;
 
 class LoginPage extends PageObject
 {

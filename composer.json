@@ -2,17 +2,16 @@
     "require": {
         "codeception/codeception": "^5.1",
         "codeception/module-phpbrowser": "*",
-        "codeception/module-asserts": "*",
         "facebook/webdriver": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "Pages\\": "Pages",
-            "PageActions\\": "PageActions",
+            "Pages\\": "tests/Pages",
             "Tests\\Support\\": "tests/Support"
         }
     },
     "require-dev": {
-        "codeception/module-webdriver": "^4.0"
+        "codeception/module-webdriver": "^4.0",
+        "codeception/module-asserts": "^3.0"
     }
 }

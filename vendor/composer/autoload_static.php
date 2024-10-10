@@ -179,11 +179,11 @@ class ComposerStaticInit3cda6103b0403de0c5cca767c044a49f
         ),
         'Pages\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/Pages',
+            0 => __DIR__ . '/../..' . '/tests/Pages',
         ),
         'PageActions\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/PageActions',
+            0 => __DIR__ . '/../..' . '/tests/PageActions',
         ),
         'Masterminds\\' => 
         array (
