@@ -23,12 +23,20 @@ class ShopsPage extends PageObject
             'orgNrField' => '[id="cvr"]',
             'latitudeField' => '[id="lat"]',
             'longitudeField' => '[id="lng"]',
-            'saveShopButton' => '[ng-if="parent_form.main_form.$valid"]',
+            'saveShopButton' => '[id="button-save"]',
             'shopsSearchResults' => '[class="search-result-text ng-binding"]',
             'removeShopButton' => '[id="button-remove"]',
             'confirmRemoveShopButton' => '[ng-click="$close(true)"]',
             'shopRemovedToastMessage' => '[class="inner"]',
             'shopUpdatedToastMessage' => '[class="messages"]',
+            'openingHoursTab' => '[id="tab-button--tab-2"]',
+            'setAllDaysHoursFromField' => '//*[@id="day_template_from"]/table/tbody/tr[2]/td[1]/input',
+            'setAllDaysMinutesFromField' => '//*[@id="day_template_from"]/table/tbody/tr[2]/td[3]/input',
+            'setAllDaysHoursToField' => '//*[@id="day_template_to"]/table/tbody/tr[2]/td[1]/input',
+            'setAllDaysMinutesToField' => '//*[@id="day_template_to"]/table/tbody/tr[2]/td[3]/input',
+            'vippsTab' => '[id="tab-button--tab-3"]',
+            'vippsActiveRadioButton' => '[for="vipps_enabled"]',
+            'merchantSerialNumberField' => '[id="vipps_merchant_serial_number"]',
         ];
 
     public array $data =

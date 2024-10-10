@@ -72,15 +72,58 @@ class ShopsPageActions
     {
         $I->reloadPage();
         $I->waitForElement($this->shopsPage->getSelector('shopsSearchResults'));
-        $selectors = $I->grabMultiple($this->shopsPage->getSelector('shopsSearchResults'));
-        $mySelector = $I->findSelectorByText(
-            $selectors,
-            $this->shopsPage->getData('shopName'));
-        $I->click($mySelector);
+        $this->selectShopFromSearchTab($I, $this->shopsPage->getData('shopName'));
         $I->scrollIntoView($this->shopsPage->getSelector('removeShopButton'));
         $I->waitForElementClickable($this->shopsPage->getSelector('removeShopButton'), 15);
         $I->click($this->shopsPage->getSelector('removeShopButton'));
         $I->click($this->shopsPage->getSelector('confirmRemoveShopButton'));
         $I->seeElement($this->shopsPage->getSelector('shopRemovedToastMessage'));
     }
+
+    public function updateShopOpeningHoursAndVipps(AcceptanceTester $I): void
+    {
+        $this->selectShopFromSearchTab($I, $this->shopsPage->getData('shopName'));
+        $this->setAllDaysOpeningHoursForShop($I);
+        $this->setVippsForShop($I);
+    }
+
+    private function setAllDaysOpeningHoursForShop(AcceptanceTester $I): void
+    {
+        $I->waitForElement($this->shopsPage->getSelector('openingHoursTab'), 15);
+        $I->wait(1);
+        $I->click($this->shopsPage->getSelector('openingHoursTab'));
+        $I->click($this->shopsPage->getSelector('setAllDaysHoursFromField'));
+        $I->fillField($this->shopsPage->getSelector('setAllDaysHoursFromField'), 7);
+        $I->fillField($this->shopsPage->getSelector('setAllDaysMinutesFromField'), 0);
+        $I->fillField($this->shopsPage->getSelector('setAllDaysHoursToField'), 23);
+        $I->fillField($this->shopsPage->getSelector('setAllDaysMinutesToField'), 0);
+        $I->scrollIntoView($this->shopsPage->getSelector('saveShopButton'));
+        $I->waitForElementClickable($this->shopsPage->getSelector('saveShopButton'), 15);
+        $I->click($this->shopsPage->getSelector('saveShopButton'));
+        $I->seeElement($this->shopsPage->getSelector('shopUpdatedToastMessage'));
+    }
+
+    private function setVippsForShop(AcceptanceTester $I): void
+    {
+        $I->seeElement($this->shopsPage->getSelector('vippsTab'));
+        $I->waitForElementClickable($this->shopsPage->getSelector('vippsTab'), 15);
+        $I->click($this->shopsPage->getSelector('vippsTab'));
+        $I->fillField($this->shopsPage->getSelector('merchantSerialNumberField'), 1234567);
+        $I->click($this->shopsPage->getSelector('vippsActiveRadioButton'));
+        $I->waitForElementClickable($this->shopsPage->getSelector('saveShopButton'), 15);
+        $I->click($this->shopsPage->getSelector('saveShopButton'));
+        $I->seeElement($this->shopsPage->getSelector('shopUpdatedToastMessage'));
+    }
+
+    private function selectShopFromSearchTab(AcceptanceTester $I, string $shopName): void
+    {
+        $newShop = $I->findSelectorByText(
+            $I,
+            $this->shopsPage->getSelector('shopsSearchResults'),
+            $shopName
+        );
+        $I->click($newShop);
+    }
+
+
 }

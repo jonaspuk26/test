@@ -15,8 +15,9 @@ class CustomHelpers extends Module
         $this->getModule('WebDriver')->executeJS("document.querySelector('$selector').scrollIntoView();");
     }
 
-    public function findSelectorByText(array $selectors, string $text)
+    public function findSelectorByText(AcceptanceTester $I, string $selector, string $text)
     {
+        $selectors = $I->grabMultiple($selector);
         foreach ($selectors as $selector) {
             if (strpos($selector, $text) !== false) {
                 return $selector;

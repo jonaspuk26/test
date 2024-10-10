@@ -18,6 +18,12 @@ class ShopsPageCest
     {
         $this->shopsPage->goToShopsPage($I);
         $this->shopsPage->addNewShop($I);
+    }
+
+    public function testUpdateShop(AcceptanceTester $I): void
+    {
+        $this->shopsPage->goToShopsPage($I);
+        $this->shopsPage->updateShopOpeningHoursAndVipps($I);
         $this->shopsPage->deleteNewShop($I);
     }
 }
