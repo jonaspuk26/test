@@ -12,12 +12,11 @@ class UsersRolesPageActions
     private UsersRolesPage $usersRolesPage;
     private LoginPageActions $loginPage;
     private Header $header;
-    public AcceptanceTester $I;
 
     public function __construct()
     {
         $this->usersRolesPage = new UsersRolesPage;
-        $this->loginPage= new LoginPageActions;
+        $this->loginPage = new LoginPageActions;
         $this->header = new Header;
     }
 
@@ -36,10 +35,30 @@ class UsersRolesPageActions
         $I->waitForElementClickable($this->usersRolesPage->getSelector('generateIdButton'));
         $I->click($this->usersRolesPage->getSelector('generateIdButton'));
         $this->assertGeneratedIdStructure($I);
-        $I->fillField($this->usersRolesPage->getSelector('nameField'), 'TestRole');
+        $I->fillField(
+            $this->usersRolesPage->getSelector('nameField'),
+            $this->usersRolesPage->getData('roleName')
+        );
         $I->waitForElementClickable($this->usersRolesPage->getSelector('saveRoleButton'));
         $I->click($this->usersRolesPage->getSelector('saveRoleButton'));
-        $I->seeElement($this->usersRolesPage->getSelector('roleSavedToastMessage'));
+        $I->seeElement($this->usersRolesPage->getSelector('roleToastMessage'));
+        return $this;
+    }
+
+    public function deleteNewRole(AcceptanceTester $I): self
+    {
+        $I->reloadPage();
+        $I->waitForElement($this->usersRolesPage->getSelector('rolesSearchResults'));
+        $this->selectRoleFromSearchTab(
+            $I,
+            $this->usersRolesPage->getData('roleName')
+        );
+        $I->waitForElementClickable($this->usersRolesPage->getSelector('removeRoleButton'));
+        $I->wait(1);
+        $I->click($this->usersRolesPage->getSelector('removeRoleButton'));
+        $I->waitForElementClickable($this->usersRolesPage->getSelector('confirmRemoveRoleButton'));
+        $I->click($this->usersRolesPage->getSelector('confirmRemoveRoleButton'));
+        $I->seeElement($this->usersRolesPage->getSelector('roleToastMessage'));
         return $this;
     }
 
@@ -54,5 +73,15 @@ class UsersRolesPageActions
         $I->assertEquals(4, strlen($partsOfId[2]));
         $I->assertEquals(4, strlen($partsOfId[3]));
         $I->assertEquals(12, strlen($partsOfId[4]));
+    }
+
+    private function selectRoleFromSearchTab(AcceptanceTester $I, string $roleName): void
+    {
+        $newRole = $I->findSelectorByText(
+            $I,
+            $this->usersRolesPage->getSelector('rolesSearchResults'),
+            $roleName
+        );
+        $I->click($newRole);
     }
 }

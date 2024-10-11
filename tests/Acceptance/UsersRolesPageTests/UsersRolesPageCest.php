@@ -17,6 +17,7 @@ class UsersRolesPageCest
     {
         $this->usersRolesPage
             ->goToUsersRolesPage($I)
-            ->addNewRole($I);
+            ->addNewRole($I)
+            ->deleteNewRole($I);
     }
 }

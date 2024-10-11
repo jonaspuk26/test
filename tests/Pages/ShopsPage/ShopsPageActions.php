@@ -78,7 +78,10 @@ class ShopsPageActions
     {
         $I->reloadPage();
         $I->waitForElement($this->shopsPage->getSelector('shopsSearchResults'));
-        $this->selectShopFromSearchTab($I, $this->shopsPage->getData('shopName'));
+        $this->selectShopFromSearchTab(
+            $I,
+            $this->shopsPage->getData('shopName')
+        );
         $I->scrollIntoView($this->shopsPage->getSelector('removeShopButton'));
         $I->waitForElementClickable($this->shopsPage->getSelector('removeShopButton'), 15);
         $I->click($this->shopsPage->getSelector('removeShopButton'));
