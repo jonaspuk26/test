@@ -11,5 +11,7 @@ class Header extends PageObject
             'headerLogo' => '.logo-container',
             'shopsHeader' => '[title="Shops"]',
             'shopsHeaderMenu' => '[href="/shops//details"]',
+            'usersHeader' => '[title="Users"]',
+            'rolesHeaderMenu' => '[href="/roles//edit"]',
         ];
 }

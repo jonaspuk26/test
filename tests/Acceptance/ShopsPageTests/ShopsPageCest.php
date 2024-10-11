@@ -7,7 +7,7 @@ use Tests\Support\AcceptanceTester;
 
 class ShopsPageCest
 {
-    private $shopsPage;
+    private ShopsPageActions $shopsPage;
 
     function _before(): void
     {
