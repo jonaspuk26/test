@@ -16,14 +16,16 @@ class ShopsPageCest
 
     public function testAddNewShop(AcceptanceTester $I): void
     {
-        $this->shopsPage->goToShopsPage($I);
-        $this->shopsPage->addNewShop($I);
+        $this->shopsPage
+            ->goToShopsPage($I)
+            ->addNewShop($I);
     }
 
     public function testUpdateShop(AcceptanceTester $I): void
     {
-        $this->shopsPage->goToShopsPage($I);
-        $this->shopsPage->updateShopOpeningHoursAndVipps($I);
-        $this->shopsPage->deleteNewShop($I);
+        $this->shopsPage
+            ->goToShopsPage($I)
+            ->updateShopOpeningHoursAndVipps($I)
+            ->deleteNewShop($I);
     }
 }

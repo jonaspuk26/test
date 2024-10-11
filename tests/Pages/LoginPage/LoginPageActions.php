@@ -7,13 +7,15 @@ use Tests\Support\AcceptanceTester;
 
 class LoginPageActions
 {
+    private LoginPage $loginPage;
+    private Header $header;
     public function __construct()
     {
         $this->loginPage = new LoginPage();
         $this->header = new Header();
     }
 
-    public function login(AcceptanceTester $I)
+    public function login(AcceptanceTester $I): self
     {
         $I->amOnPage('/');
         $I->waitForElement($this->loginPage->getSelector('emailField'), 10);
@@ -21,5 +23,6 @@ class LoginPageActions
         $I->fillField($this->loginPage->getSelector('passwordField'), 'admin123');
         $I->click($this->loginPage->getSelector('submitButton'));
         $I->seeElement($this->header->getSelector('headerLogo'));
+        return $this;
     }
 }

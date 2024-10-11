@@ -8,6 +8,10 @@ use Tests\Support\AcceptanceTester;
 
 class ShopsPageActions
 {
+    private Header $header;
+    private ShopsPage $shopsPage;
+    private LoginPageActions $loginPage;
+
     public function __construct()
     {
         $this->header = new Header();
@@ -15,16 +19,17 @@ class ShopsPageActions
         $this->loginPage = new LoginPageActions();
     }
 
-    public function goToShopsPage(AcceptanceTester $I): void
+    public function goToShopsPage(AcceptanceTester $I): self
     {
         $this->loginPage->login($I);
         $I->waitForElement($this->header->getSelector('shopsHeader'));
         $I->click($this->header->getSelector('shopsHeader'));
         $I->click($this->header->getSelector('shopsHeaderMenu'));
         $I->seeElement($this->shopsPage->getSelector('addNewShopButton'));
+        return $this;
     }
 
-    public function addNewShop(AcceptanceTester $I): void
+    public function addNewShop(AcceptanceTester $I): self
     {
         $I->fillField(
             $this->shopsPage->getSelector('shopNameField'),
@@ -66,9 +71,10 @@ class ShopsPageActions
         $I->waitForElementClickable($this->shopsPage->getSelector('saveShopButton'), 15);
         $I->click($this->shopsPage->getSelector('saveShopButton'));
         $I->seeElement($this->shopsPage->getSelector('shopUpdatedToastMessage'));
+        return $this;
     }
 
-    public function deleteNewShop(AcceptanceTester $I): void
+    public function deleteNewShop(AcceptanceTester $I): self
     {
         $I->reloadPage();
         $I->waitForElement($this->shopsPage->getSelector('shopsSearchResults'));
@@ -78,13 +84,15 @@ class ShopsPageActions
         $I->click($this->shopsPage->getSelector('removeShopButton'));
         $I->click($this->shopsPage->getSelector('confirmRemoveShopButton'));
         $I->seeElement($this->shopsPage->getSelector('shopRemovedToastMessage'));
+        return $this;
     }
 
-    public function updateShopOpeningHoursAndVipps(AcceptanceTester $I): void
+    public function updateShopOpeningHoursAndVipps(AcceptanceTester $I): self
     {
         $this->selectShopFromSearchTab($I, $this->shopsPage->getData('shopName'));
         $this->setAllDaysOpeningHoursForShop($I);
         $this->setVippsForShop($I);
+        return $this;
     }
 
     private function setAllDaysOpeningHoursForShop(AcceptanceTester $I): void
@@ -124,6 +132,4 @@ class ShopsPageActions
         );
         $I->click($newShop);
     }
-
-
 }

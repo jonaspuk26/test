@@ -8,7 +8,7 @@ class Header extends PageObject
 {
     public array $selector =
         [
-            'headerLogo' => '[class="logo-container"]',
+            'headerLogo' => '.logo-container',
             'shopsHeader' => '[title="Shops"]',
             'shopsHeaderMenu' => '[href="/shops//details"]',
         ];
