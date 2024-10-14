@@ -9,9 +9,9 @@ class ShopsPageCest
 {
     private ShopsPageActions $shopsPage;
 
-    function _before(): void
+    public function _inject(ShopsPageActions $shopsPage): void
     {
-        $this->shopsPage = new ShopsPageActions();
+        $this->shopsPage = $shopsPage;
     }
 
     public function testAddNewShop(AcceptanceTester $I): void

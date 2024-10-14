@@ -3,7 +3,6 @@
 namespace Pages\UsersRolesPage;
 
 use Pages\HeaderMenuPage\Header;
-use Pages\LoginPage\LoginPage;
 use Pages\LoginPage\LoginPageActions;
 use Tests\Support\AcceptanceTester;
 
@@ -13,11 +12,15 @@ class UsersRolesPageActions
     private LoginPageActions $loginPage;
     private Header $header;
 
-    public function __construct()
+    public function __construct(
+        UsersRolesPage $usersRolesPage,
+        LoginPageActions $loginPage,
+        Header $header
+    )
     {
-        $this->usersRolesPage = new UsersRolesPage;
-        $this->loginPage = new LoginPageActions;
-        $this->header = new Header;
+        $this->usersRolesPage = $usersRolesPage;
+        $this->loginPage = $loginPage;
+        $this->header = $header;
     }
 
     public function goToUsersRolesPage(AcceptanceTester $I): self

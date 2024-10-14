@@ -12,11 +12,15 @@ class ShopsPageActions
     private ShopsPage $shopsPage;
     private LoginPageActions $loginPage;
 
-    public function __construct()
+    public function __construct(
+        Header           $header,
+        ShopsPage        $shopsPage,
+        LoginPageActions $loginPage
+    )
     {
-        $this->header = new Header();
-        $this->shopsPage = new ShopsPage();
-        $this->loginPage = new LoginPageActions();
+        $this->header = $header;
+        $this->shopsPage = $shopsPage;
+        $this->loginPage = $loginPage;
     }
 
     public function goToShopsPage(AcceptanceTester $I): self

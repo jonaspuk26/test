@@ -9,10 +9,13 @@ class LoginPageActions
 {
     private LoginPage $loginPage;
     private Header $header;
-    public function __construct()
+    public function __construct(
+        LoginPage $loginPage,
+        Header $header
+    )
     {
-        $this->loginPage = new LoginPage();
-        $this->header = new Header();
+        $this->loginPage = $loginPage;
+        $this->header = $header;
     }
 
     public function login(AcceptanceTester $I): self

@@ -8,9 +8,9 @@ use Tests\Support\AcceptanceTester;
 class UsersRolesPageCest
 {
     private UsersRolesPageActions $usersRolesPage;
-    function _before():void
+    public function _inject(UsersRolesPageActions $usersRolesPage): void
     {
-        $this->usersRolesPage = new UsersRolesPageActions();
+        $this->usersRolesPage = $usersRolesPage;
     }
 
     public function testAddNewRole(AcceptanceTester $I): void
