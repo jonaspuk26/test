@@ -80,6 +80,10 @@
       <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/vendor/php-di/invoker" />
       <path value="$PROJECT_DIR$/vendor/php-di/php-di" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/codeception/module-rest" />
+      <path value="$PROJECT_DIR$/vendor/codeception/lib-xml" />
+      <path value="$PROJECT_DIR$/vendor/softcreatr/jsonpath" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3">
