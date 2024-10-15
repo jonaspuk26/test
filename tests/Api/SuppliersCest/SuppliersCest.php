@@ -3,7 +3,6 @@
 
 namespace Api\SuppliersCest;
 
-use Codeception\Attribute\Skip;
 use Entities\Authentication\Authentication;
 use Entities\Suppliers\SuppliersActions;
 use Tests\Support\ApiTester;
@@ -32,6 +31,14 @@ class SuppliersCest
     {
         $this->suppliers
             ->createSupplier($I)
+            ->deleteSupplier($I);
+    }
+
+    public function testGetSupplier(ApiTester $I): void
+    {
+        $this->suppliers
+            ->createSupplier($I)
+            ->getSupplier($I)
             ->deleteSupplier($I);
     }
 }

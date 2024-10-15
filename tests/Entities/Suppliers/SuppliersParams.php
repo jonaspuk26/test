@@ -8,7 +8,7 @@ class SuppliersParams
     public string $suppliersEndpoint = '/suppliers';
     public array $suppliersPostParams = [];
     public array $suppliersPostResponseParams = [];
-    public string $suppliersDeleteUrl;
+    public string $suppliersWithIdEndpoint;
     public array $suppliersDeleteResponseParams = [];
 
     public function __construct()
@@ -31,7 +31,7 @@ class SuppliersParams
                 'contact_person' => null,
                 'external_id' => null,
             ];
-        $this->suppliersDeleteUrl = "$this->suppliersEndpoint/$this->uniqueId";
+        $this->suppliersWithIdEndpoint = "$this->suppliersEndpoint/$this->uniqueId";
         $this->suppliersDeleteResponseParams =
             [
                 'success' => true,

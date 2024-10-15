@@ -28,10 +28,19 @@ class SuppliersActions
 
     public function deleteSupplier(ApiTester $I): self
     {
-        $I->sendDelete($this->suppliersParams->suppliersDeleteUrl);
+        $I->sendDelete($this->suppliersParams->suppliersWithIdEndpoint);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson($this->suppliersParams->suppliersDeleteResponseParams);
+        return $this;
+    }
+
+    public function getSupplier(ApiTester $I): self
+    {
+        $I->sendGet($this->suppliersParams->suppliersWithIdEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson($this->suppliersParams->suppliersPostResponseParams);
         return $this;
     }
 }
