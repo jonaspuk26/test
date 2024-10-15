@@ -3,18 +3,18 @@
 
 namespace Api\SuppliersCest;
 
-use Entities\Authentication\Authentication;
+use Entities\Authentication\AuthenticationActions;
 use Entities\Suppliers\SuppliersActions;
 use Tests\Support\ApiTester;
 
 class SuppliersCest
 {
-    private Authentication $auth;
+    private AuthenticationActions $auth;
     private SuppliersActions $suppliers;
 
     public function _inject(
-        Authentication   $auth,
-        SuppliersActions $suppliers
+        AuthenticationActions $auth,
+        SuppliersActions      $suppliers
     ): void
     {
         $this->auth = $auth;
