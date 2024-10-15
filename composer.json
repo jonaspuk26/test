@@ -9,7 +9,8 @@
         "psr-4": {
             "Pages\\": "tests/Pages",
             "Tests\\Support\\": "tests/Support",
-            "Api\\": "tests/Api"
+            "Api\\": "tests/Api",
+            "Entities\\": "tests/Entities"
         }
     },
     "require-dev": {
