@@ -43,4 +43,33 @@ class SuppliersActions
         $I->seeResponseContainsJson($this->suppliersParams->suppliersPostResponseParams);
         return $this;
     }
+
+    public function assertSupplierGetCountAndGetListHaveSameAmounts(ApiTester $I): self
+    {
+        $countFromList = $this->countSuppliersFromGetList($I);
+        $I->sendGet($this->suppliersParams->suppliersCountEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            [
+                'count' => $countFromList
+            ]);
+        return $this;
+    }
+
+    private function getSuppliersList(ApiTester $I): string
+    {
+        $list = $I->sendGet($this->suppliersParams->suppliersEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        return $list;
+    }
+
+    private function countSuppliersFromGetList(ApiTester $I): int
+    {
+        return substr_count(
+            $this->getSuppliersList($I),
+            'name'
+        );
+    }
 }

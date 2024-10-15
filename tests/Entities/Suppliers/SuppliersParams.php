@@ -10,6 +10,7 @@ class SuppliersParams
     public array $suppliersPostResponseParams = [];
     public string $suppliersWithIdEndpoint;
     public array $suppliersDeleteResponseParams = [];
+    public string $suppliersCountEndpoint;
 
     public function __construct()
     {
@@ -36,5 +37,6 @@ class SuppliersParams
             [
                 'success' => true,
             ];
+        $this->suppliersCountEndpoint = "/count$this->suppliersEndpoint";
     }
 }

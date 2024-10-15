@@ -13,8 +13,8 @@ class SuppliersCest
     private SuppliersActions $suppliers;
 
     public function _inject(
-        Authentication $auth,
-        SuppliersActions      $suppliers
+        Authentication   $auth,
+        SuppliersActions $suppliers
     ): void
     {
         $this->auth = $auth;
@@ -23,7 +23,8 @@ class SuppliersCest
 
     public function _before(ApiTester $I): void
     {
-        $this->auth->authenticate($I);
+        $this->auth
+            ->authenticate($I);
     }
 
     // tests
@@ -40,5 +41,11 @@ class SuppliersCest
             ->createSupplier($I)
             ->getSupplier($I)
             ->deleteSupplier($I);
+    }
+
+    public function testSuppliersGetCountFromGetList(ApiTester $I): void
+    {
+        $this->suppliers
+            ->assertSupplierGetCountAndGetListHaveSameAmounts($I);
     }
 }
