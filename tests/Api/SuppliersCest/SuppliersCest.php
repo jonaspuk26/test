@@ -56,4 +56,12 @@ class SuppliersCest
             ->modifySupplier($I)
             ->deleteSupplier($I);
     }
+
+    public function testUpdateSupplier(ApiTester $I): void
+    {
+        $this->suppliers
+            ->createSupplier($I)
+            ->updateSupplier($I)
+            ->deleteSupplier($I);
+    }
 }

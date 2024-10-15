@@ -6,8 +6,8 @@ class SuppliersParams
 {
     public string $uniqueId;
     public string $suppliersEndpoint = '/suppliers';
-    public array $suppliersPostParams = [];
-    public array $suppliersPostResponseParams = [];
+    public array $suppliersIdNameEmailParams = [];
+    public array $suppliersFullParams = [];
     public string $suppliersWithIdEndpoint;
     public array $suppliersDeleteResponseParams = [];
     public string $suppliersCountEndpoint;
@@ -15,17 +15,17 @@ class SuppliersParams
         [
             'name' => 'modified'
         ];
-
+    public array $modifiedSuppliersFullParams = [];
     public function __construct()
     {
         $this->uniqueId = uniqid();
-        $this->suppliersPostParams =
+        $this->suppliersIdNameEmailParams =
             [
                 'id' => $this->uniqueId,
                 'name' => 'test',
                 'email' => 'test@test.com'
             ];
-        $this->suppliersPostResponseParams =
+        $this->suppliersFullParams =
             [
                 'id' => $this->uniqueId,
                 'name' => 'test',
@@ -42,5 +42,16 @@ class SuppliersParams
                 'success' => true,
             ];
         $this->suppliersCountEndpoint = "/count$this->suppliersEndpoint";
+        $this->modifiedSuppliersFullParams =
+            [
+                'id' => $this->uniqueId,
+                'name' => 'modified',
+                'cvr' => null,
+                'email' => 'test@test.com',
+                'phone' => null,
+                'address' => null,
+                'contact_person' => null,
+                'external_id' => null,
+            ];
     }
 }

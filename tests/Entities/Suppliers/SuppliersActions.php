@@ -18,11 +18,11 @@ class SuppliersActions
         $this->suppliersParams = new SuppliersParams();
         $I->sendPost(
             $this->suppliersParams->suppliersEndpoint,
-            $this->suppliersParams->suppliersPostParams
+            $this->suppliersParams->suppliersIdNameEmailParams
         );
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        $I->seeResponseContainsJson($this->suppliersParams->suppliersPostResponseParams);
+        $I->seeResponseContainsJson($this->suppliersParams->suppliersFullParams);
         return $this;
     }
 
@@ -40,7 +40,7 @@ class SuppliersActions
         $I->sendGet($this->suppliersParams->suppliersWithIdEndpoint);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        $I->seeResponseContainsJson($this->suppliersParams->suppliersPostResponseParams);
+        $I->seeResponseContainsJson($this->suppliersParams->suppliersFullParams);
         return $this;
     }
 
@@ -82,7 +82,21 @@ class SuppliersActions
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
-            $this->suppliersParams->modifiedNameParam
+            $this->suppliersParams->modifiedSuppliersFullParams
+        );
+        return $this;
+    }
+
+    public function updateSupplier(ApiTester $I): self
+    {
+        $I->sendPut(
+            $this->suppliersParams->suppliersWithIdEndpoint,
+            $this->suppliersParams->modifiedSuppliersFullParams
+        );
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            $this->suppliersParams->modifiedSuppliersFullParams
         );
         return $this;
     }
