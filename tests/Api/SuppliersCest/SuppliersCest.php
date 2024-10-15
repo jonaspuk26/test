@@ -30,11 +30,6 @@ class SuppliersCest
     // tests
     public function testCreateSupplier(ApiTester $I): void
     {
-        $this->suppliers->createSupplier($I);
-    }
-
-    public function testDeleteSupplier(ApiTester $I): void
-    {
         $this->suppliers
             ->createSupplier($I)
             ->deleteSupplier($I);
