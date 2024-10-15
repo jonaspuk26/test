@@ -72,4 +72,18 @@ class SuppliersActions
             'name'
         );
     }
+
+    public function modifySupplier(ApiTester $I): self
+    {
+        $I->sendPatch(
+            $this->suppliersParams->suppliersWithIdEndpoint,
+            $this->suppliersParams->modifiedNameParam
+        );
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(
+            $this->suppliersParams->modifiedNameParam
+        );
+        return $this;
+    }
 }

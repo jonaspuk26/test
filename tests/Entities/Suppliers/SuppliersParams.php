@@ -11,6 +11,10 @@ class SuppliersParams
     public string $suppliersWithIdEndpoint;
     public array $suppliersDeleteResponseParams = [];
     public string $suppliersCountEndpoint;
+    public array $modifiedNameParam =
+        [
+            'name' => 'modified'
+        ];
 
     public function __construct()
     {

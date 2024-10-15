@@ -48,4 +48,12 @@ class SuppliersCest
         $this->suppliers
             ->assertSuppliersAmount($I);
     }
+
+    public function testModifySupplier(ApiTester $I): void
+    {
+        $this->suppliers
+            ->createSupplier($I)
+            ->modifySupplier($I)
+            ->deleteSupplier($I);
+    }
 }
