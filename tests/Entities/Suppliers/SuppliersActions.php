@@ -44,7 +44,7 @@ class SuppliersActions
         return $this;
     }
 
-    public function assertSupplierGetCountAndGetListHaveSameAmounts(ApiTester $I): self
+    public function assertSuppliersAmount(ApiTester $I): self
     {
         $countFromList = $this->countSuppliersFromGetList($I);
         $I->sendGet($this->suppliersParams->suppliersCountEndpoint);

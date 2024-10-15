@@ -43,9 +43,9 @@ class SuppliersCest
             ->deleteSupplier($I);
     }
 
-    public function testSuppliersGetCountFromGetList(ApiTester $I): void
+    public function testSuppliersGetCount(ApiTester $I): void
     {
         $this->suppliers
-            ->assertSupplierGetCountAndGetListHaveSameAmounts($I);
+            ->assertSuppliersAmount($I);
     }
 }
