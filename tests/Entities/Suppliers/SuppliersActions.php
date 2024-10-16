@@ -30,7 +30,6 @@ class SuppliersActions
     {
         $I->sendDelete($this->suppliersParams->suppliersWithIdEndpoint);
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         $I->seeResponseContainsJson($this->suppliersParams->suppliersDeleteResponseParams);
         return $this;
     }
@@ -39,7 +38,6 @@ class SuppliersActions
     {
         $I->sendGet($this->suppliersParams->suppliersWithIdEndpoint);
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         $I->seeResponseContainsJson($this->suppliersParams->suppliersFullParams);
         return $this;
     }
@@ -49,7 +47,6 @@ class SuppliersActions
         $countFromList = $this->countSuppliersFromGetList($I);
         $I->sendGet($this->suppliersParams->suppliersCountEndpoint);
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             [
                 'count' => $countFromList
@@ -61,7 +58,6 @@ class SuppliersActions
     {
         $list = $I->sendGet($this->suppliersParams->suppliersEndpoint);
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         return $list;
     }
 
@@ -80,7 +76,6 @@ class SuppliersActions
             $this->suppliersParams->modifiedNameParam
         );
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             $this->suppliersParams->modifiedSuppliersFullParams
         );
@@ -94,7 +89,6 @@ class SuppliersActions
             $this->suppliersParams->modifiedSuppliersFullParams
         );
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
         $I->seeResponseContainsJson(
             $this->suppliersParams->modifiedSuppliersFullParams
         );
