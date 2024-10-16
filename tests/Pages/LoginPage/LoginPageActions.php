@@ -22,8 +22,8 @@ class LoginPageActions
     {
         $I->amOnPage('/');
         $I->waitForElement($this->loginPage->getSelector('emailField'), 10);
-        $I->fillField($this->loginPage->getSelector('emailField'), 'jonas.pukenas@twoday.com');
-        $I->fillField($this->loginPage->getSelector('passwordField'), 'admin123');
+        $I->fillField($this->loginPage->getSelector('emailField'), $_ENV['USERNAME']);
+        $I->fillField($this->loginPage->getSelector('passwordField'), $_ENV['PASSWORD']);
         $I->click($this->loginPage->getSelector('submitButton'));
         $I->seeElement($this->header->getSelector('headerLogo'));
         return $this;

@@ -3,14 +3,19 @@
         "codeception/codeception": "^5.1",
         "codeception/module-phpbrowser": "*",
         "facebook/webdriver": "^1.1",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.0",
+        "vlucas/phpdotenv": "^5.6"
     },
     "autoload": {
+        "files": [
+            "bootstrap.php"
+        ],
         "psr-4": {
             "Pages\\": "tests/Pages",
             "Tests\\Support\\": "tests/Support",
             "Api\\": "tests/Api",
-            "Entities\\": "tests/Entities"
+            "Entities\\": "tests/Entities",
+            "Dotenv\\": "tests/"
         }
     },
     "require-dev": {

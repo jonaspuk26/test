@@ -9,7 +9,7 @@ class ShopsPageCest
 {
     private ShopsPageActions $shopsPage;
 
-    public function __construct(ShopsPageActions $shopsPage)
+    public function _inject(ShopsPageActions $shopsPage)
     {
         $this->shopsPage = $shopsPage;
     }
