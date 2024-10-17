@@ -50,7 +50,8 @@ class SuppliersActions
         $I->seeResponseContainsJson(
             [
                 'count' => $countFromList
-            ]);
+            ]
+        );
         return $this;
     }
 

@@ -40,4 +40,10 @@ public function testGetCustomer(ApiTester $I): void
         ->getCustomer($I)
         ->deleteCustomer($I);
 }
+
+public function testCustomersGetCount(ApiTester $I): void
+{
+    $this->customers
+        ->assertCustomersAmount($I);
+}
 }

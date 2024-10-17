@@ -5,6 +5,7 @@ class CustomersParams
 {
     public string $customersEndpoint = '/customers';
     public string $customersWithIdEndpoint;
+    public string $customersCountEndpoint;
     public array $customersFullParams = [];
     public array $customersPostResponseParams = [];
     public string $customerId;
@@ -66,5 +67,6 @@ class CustomersParams
                 "customer_locations" => $customerLocations,
                 "has_password" => true,
             ];
+        $this->customersCountEndpoint = "/count$this->customersEndpoint";
     }
 }

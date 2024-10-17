@@ -39,4 +39,32 @@ class CustomersActions
         $I->seeResponseContainsJson($this->customersParams->customersPostResponseParams);
         return $this;
     }
+
+    public function assertCustomersAmount(ApiTester $I): self
+    {
+        $countFromList = $this->countCustomersFromGetList($I);
+        $I->sendGet($this->customersParams->customersCountEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseContainsJson(
+            [
+                'count' => $countFromList
+            ]
+        );
+        return $this;
+    }
+
+    private function getCustomersList(ApiTester $I): string
+    {
+        $list = $I->sendGet($this->customersParams->customersEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        return $list;
+    }
+
+    private function countCustomersFromGetList(ApiTester $I): int
+    {
+        return substr_count(
+            $this->getCustomersList($I),
+            'card_number'
+        );
+    }
 }
