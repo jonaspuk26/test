@@ -6,7 +6,7 @@ use Pages\PageObject;
 
 class Header extends PageObject
 {
-    public array $selector =
+    protected array $selector =
         [
             'headerLogo' => '.logo-container',
             'shopsHeader' => '[title="Shops"]',

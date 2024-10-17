@@ -6,7 +6,7 @@ use Pages\PageObject;
 
 class LoginPage extends PageObject
 {
-    public array $selector =
+    protected array $selector =
         [
             'emailField' => 'input[type="email"]',
             'passwordField' => 'input[type="password"]',

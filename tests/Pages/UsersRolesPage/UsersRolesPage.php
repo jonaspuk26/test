@@ -6,7 +6,7 @@ use Pages\PageObject;
 
 class UsersRolesPage extends PageObject
 {
-    public array $selector =
+    protected array $selector =
         [
             'nameField' => '#name',
             'idInputField' => '[class="input-container input-with-button"] input',
@@ -21,7 +21,7 @@ class UsersRolesPage extends PageObject
             'confirmRemoveRoleButton' => '[class="btn btn-primary ng-binding"]',
         ];
 
-    public array $data =
+    protected array $data =
         [
             'roleName' => 'TestRole'
         ];

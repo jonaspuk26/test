@@ -6,7 +6,7 @@ use Pages\PageObject;
 
 class ShopsPage extends PageObject
 {
-    public array $selector =
+    protected array $selector =
         [
             'addNewShopButton' => '[class="button add-new search-field-action search-field-action-small ng-binding ng-scope active"]',
             'shopNameField' => '#name',
@@ -39,7 +39,7 @@ class ShopsPage extends PageObject
             'merchantSerialNumberField' => '#vipps_merchant_serial_number',
         ];
 
-    public array $data =
+    protected array $data =
         [
             'shopName' => 'testShop',
             'description' => 'test',
