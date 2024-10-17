@@ -32,4 +32,12 @@ public function testCreateCustomer(ApiTester $I): void
         ->createCustomer($I)
         ->deleteCustomer($I);
 }
+
+public function testGetCustomer(ApiTester $I): void
+{
+    $this->customers
+        ->createCustomer($I)
+        ->getCustomer($I)
+        ->deleteCustomer($I);
+}
 }

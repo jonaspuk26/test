@@ -31,4 +31,12 @@ class CustomersActions
         $I->seeResponseContains('"success":true');
         return $this;
     }
+
+    public function getCustomer(ApiTester $I): self
+    {
+        $I->sendGET($this->customersParams->customersWithIdEndpoint);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseContainsJson($this->customersParams->customersPostResponseParams);
+        return $this;
+    }
 }
