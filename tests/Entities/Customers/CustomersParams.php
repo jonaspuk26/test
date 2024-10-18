@@ -9,6 +9,8 @@ class CustomersParams
     public array $customersFullParams = [];
     public array $customersPostResponseParams = [];
     public array $customersGetResponseParams = [];
+    public array $customersModifiedParams = [];
+    public array $customersModifiedFullParams = [];
     public string $customerId;
     public object $customerObjects;
     public int $numberOfContacts = 2;
@@ -84,6 +86,39 @@ class CustomersParams
                 "card_number" => "string",
                 "mobilephone" => "string",
                 "workphone" => "string",
+                "otherphone" => "string",
+                "contact" => "string",
+                "warning" => "string",
+                "address" => "string",
+                "city" => "string",
+                "zipcode" => "string",
+                "country" => "string",
+                "company_cvr" => "string",
+                "customer_group_id" => null,
+                "customer_type" => "CUSTOMER_TYPE_BASIC",
+                "offline_customer" => '1',
+                "flat_discount_rate" => "$this->flatDiscountRate.00",
+                "notes" => "string",
+                "customer_contacts" => $customerContacts,
+                "customer_locations" => $customerLocations,
+                "has_password" => true,
+            ];
+
+        $this->customersModifiedParams =
+            [
+                "card_number" => "modified",
+                "mobilephone" => "modified",
+                "workphone" => "modified",
+            ];
+
+        $this->customersModifiedFullParams =
+            [
+                "id" => $this->customerId,
+                "name" => "name1",
+                "email" => "$this->customerId@example.com",
+                "card_number" => "modified",
+                "mobilephone" => "modified",
+                "workphone" => "modified",
                 "otherphone" => "string",
                 "contact" => "string",
                 "warning" => "string",

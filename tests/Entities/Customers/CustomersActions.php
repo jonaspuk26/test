@@ -67,4 +67,25 @@ class CustomersActions
             'card_number'
         );
     }
+
+    public function modifyCustomer(ApiTester $I): self
+    {
+        $I->sendPATCH(
+            $this->customersParams->customersWithIdEndpoint,
+            $this->customersParams->customersModifiedParams
+        );
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseContainsJson($this->customersParams->customersModifiedFullParams);
+        return $this;
+    }
+
+    public function updateCustomer(ApiTester $I): self
+    {
+        $I->sendPut($this->customersParams->customersWithIdEndpoint,
+            $this->customersParams->customersModifiedFullParams
+        );
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseContainsJson($this->customersParams->customersModifiedFullParams);
+        return $this;
+    }
 }

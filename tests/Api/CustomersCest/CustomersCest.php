@@ -46,4 +46,20 @@ public function testCustomersGetCount(ApiTester $I): void
     $this->customers
         ->assertCustomersAmount($I);
 }
+
+public function testModifyCustomer(ApiTester $I): void
+{
+    $this->customers
+        ->createCustomer($I)
+        ->modifyCustomer($I)
+        ->deleteCustomer($I);
+}
+
+public function testUpdateCustomer(ApiTester $I): void
+{
+    $this->customers
+        ->createCustomer($I)
+        ->updateCustomer($I)
+        ->deleteCustomer($I);
+}
 }
