@@ -36,7 +36,7 @@ class CustomersActions
     {
         $I->sendGET($this->customersParams->customersWithIdEndpoint);
         $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseContainsJson($this->customersParams->customersPostResponseParams);
+        $I->seeResponseContainsJson($this->customersParams->customersGetResponseParams);
         return $this;
     }
 
