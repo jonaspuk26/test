@@ -41,7 +41,7 @@ class ShopsPage extends PageObject
 
     protected array $data =
         [
-            'shopName' => 'testShop',
+            'shopName' => 'Mart',
             'description' => 'test',
             'receiptHeader' => 'test',
             'receiptFooter' => 'test',
